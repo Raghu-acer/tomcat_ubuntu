@@ -2,41 +2,43 @@
 - name: tomcat installation on ubuntu
   hosts: all
   become: yes
+  vars_file:
+    - vars/packages
   tasks:
     - name: 
       package:
-        name: openjdk-8-jdk
+        name: "{{ java_package }}"
         update_cache: yes
         state: present
     - name: create a group
       group:
-        name: tomcat
+        name: "{{ groupname }}"
         state: present
     - name: add a tomcat user
       user:
-        name: tomcat
-        group: tomcat
+        name: "{{ username }}"
+        group: "{{ groupname }}"
         shell: /bin/false
-        home: /opt/tomcat
+        home: "{{ tomcat_home }}"
     - name: download tomcat
       get_url:
-        url: "https://downloads.apache.org/tomcat/tomcat-9/v9.0.46/bin/apache-tomcat-9.0.46.tar.gz"
-        dest: /tmp/apache-tomcat-9.0.46.tar.gz
+        url: "{{ tomcat_url }}"
+        dest: "{{ tomcat_dest }}"
     - name: fetch the state
       stat:
-        path: /opt/tomcat
+        path: "{{ tomcat_home }}"
       register: tomcat_download
     - name: unarchive the tar file
       unarchive:
-        src: /tmp/apache-tomcat-9.0.46.tar.gz
-        dest: /opt/tomcat
+        src: "{{ tomcat_dest }}"
+        dest: "{{ tomcat_home }}"
         extra_opts: [--strip-components=1]
       when: not tomcat_download.stat.exists
     - name: group permissions
       file:
-        path: /opt/tomcat
-        group: tomcat
-        owner: tomcat
+        path: "{{ tomcat_home }}"
+        group: "{{ groupname }}"
+        owner: "{{ groupname }}"
         recurse: yes
         state: directory
     - name: owner permissions
@@ -50,11 +52,7 @@
         path: "{{ item }}"
         owner: tomcat
         recurse: yes
-      loop:
-        - /opt/tomcat/webapps
-        - /opt/tomcat/work
-        - /opt/tomcat/temp
-        - /opt/tomcat/logs
+      loop: "{{ tomcat_ownership }}"
     - name: service file 
       copy:
         src: tomcat.service
@@ -63,22 +61,20 @@
         - reload daemon
     - name: deamon enabled and start
       systemd:
-        name: tomcat
+        name: "{{ username }}"
         enabled: yes
         state: started
     - name: username and password
       copy:
         src: tomcat-users.xml
-        dest: /opt/tomcat/conf/tomcat-users.xml
+        dest: "{{ tomcat_user }}"
       notify:
         - restating
     - name: context file
       copy:
         src: context.xml
         dest: "{{ item }}"
-      loop:
-        - /opt/tomcat/webapps/manager/META-INF/context.xml
-        - /opt/tomcat/webapps/host-manager/META-INF/context.xml
+      loop: "{{ tomcat_context }}"
       notify:
         - restating
   handlers:

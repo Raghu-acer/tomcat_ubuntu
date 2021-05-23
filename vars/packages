@@ -1,0 +1,16 @@
+---
+java_package: openjdk-8-jdk
+username: tomcat
+groupname: tomcat
+tomcat_home: /opt/tomcat
+tomcat_url: "https://downloads.apache.org/tomcat/tomcat-9/v9.0.46/bin/apache-tomcat-9.0.46.tar.gz"
+tomcat_dest: /tmp/apache-tomcat-9.0.46.tar.gz
+tomcat_user: /opt/tomcat/conf/tomcat-users.xml
+tomcat_ownership:
+ - /opt/tomcat/webapps
+ - /opt/tomcat/work
+ - /opt/tomcat/temp
+ - /opt/tomcat/logs
+tomcat_context:
+ - /opt/tomcat/webapps/manager/META-INF/context.xml
+ - /opt/tomcat/webapps/host-manager/META-INF/context.xml
