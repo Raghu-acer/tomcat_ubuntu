@@ -44,6 +44,6 @@
         path: /opt/tomcat/conf/
         group: tomcat
         mode: g+x
-        state: file
+        
 
     
