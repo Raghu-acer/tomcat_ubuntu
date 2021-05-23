@@ -3,7 +3,11 @@
   hosts: all
   become: yes
   vars: 
-    tomcat_list: ["webapp", "work", "temp", "logs"]
+    tomcat_list:
+     - /opt/tomcat/webapps
+     - /opt/tomcat/works
+     - /opt/tomcat/temp
+     - /opt/tomcat/logs
   tasks:
     - name: 
       package:
@@ -41,7 +45,7 @@
         mode: g+r,g+x
     - name: ownership to webapp work tmp
       file:
-        path: /opt/tomcat/{{ tomcat_list }}
+        path: {{ tomcat_list }}
         owner: tomcat
         recurse: yes
         
