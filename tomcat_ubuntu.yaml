@@ -62,7 +62,7 @@
         - reload daemon
     - name: deamon enabled and start
       systemd:
-        name: "{{ username }}"
+        name: tomcat
         enabled: yes
         state: started
     - name: username and password
@@ -81,7 +81,7 @@
   handlers:
     - name: reload daemon
       systemd:
-        name: tomcat
+        name: tomcat.service
         daemon_reload: yes
         state: started
     - name: restating
