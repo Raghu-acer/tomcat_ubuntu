@@ -53,6 +53,9 @@
         - /opt/tomcat/work
         - /opt/tomcat/temp
         - /opt/tomcat/logs
-        
+    - name: service file 
+      copy:
+        src: tomcat.service
+        dest: /etc/systemd/system/tomcat.service
 
     
