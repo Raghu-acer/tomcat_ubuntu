@@ -18,4 +18,8 @@
         group: tomcat
         shell: /bin/false
         home: /opt/tomcat
+    - name: download tomcat
+      get_url:
+        url: "https://downloads.apache.org/tomcat/tomcat-9/v9.0.46/bin/apache-tomcat-9.0.46.tar.gz"
+        dest: /tmp/apache-tomcat-9.0.46.tar.gz
     
