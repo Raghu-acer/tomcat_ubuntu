@@ -32,6 +32,31 @@
         dest: /opt/tomcat
         extra_opts: [--strip-components=1]
       when: not tomcat_download.stat.exists
+      notify:
+        - group permissions
+        - owner permissions
+        - ownership to webapp work tmp
+    - name: service file 
+      copy:
+        src: tomcat.service
+        dest: /etc/systemd/system/tomcat.service
+      notify: 
+        - deamon reload and start
+    
+    - name: username and password
+      copy:
+        src: tomcat-users.xml
+        dest: /opt/tomcat/conf/tomcat-users.xml
+    - name: context file
+      copy:
+        src: context.xml
+        dest: "{{ item }}"
+      loop:
+        - /opt/tomcat/webapps/manager/META-INF/context.xml
+        - /opt/tomcat/webapps/host-manager/META-INF/context.xml
+      notify:
+        - restating
+  handlers: 
     - name: group permissions
       file:
         path: /opt/tomcat
@@ -52,30 +77,12 @@
         - /opt/tomcat/work
         - /opt/tomcat/temp
         - /opt/tomcat/logs
-    - name: service file 
-      copy:
-        src: tomcat.service
-        dest: /etc/systemd/system/tomcat.service
     - name: deamon reload and start
       systemd:
         name: tomcat
         daemon_reload: yes
         enabled: yes
         state: started
-    - name: username and password
-      copy:
-        src: tomcat-users.xml
-        dest: /opt/tomcat/conf/tomcat-users.xml
-    - name: context file
-      copy:
-        src: context.xml
-        dest: "{{ item }}"
-      loop:
-        - /opt/tomcat/webapps/manager/META-INF/context.xml
-        - /opt/tomcat/webapps/host-manager/META-INF/context.xml
-      notify:
-        - restating
-  handlers: 
     - name: restating
       systemd:
         name: tomcat
