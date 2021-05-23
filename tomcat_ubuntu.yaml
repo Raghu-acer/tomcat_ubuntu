@@ -22,10 +22,6 @@
       get_url:
         url: "https://downloads.apache.org/tomcat/tomcat-8/v8.5.66/bin/apache-tomcat-8.5.66.zip"
         dest: /tmp
-    - name: directory creation
-      file:
-        path: /opt/tomcat
-        state: present
     - name: unzip package
       package:
         name: unzip
