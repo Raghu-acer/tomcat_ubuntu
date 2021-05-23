@@ -2,9 +2,6 @@
 - name: tomcat installation on ubuntu
   hosts: all
   become: yes
-  vars_files:
-    - vars/packages.yaml
-    - vars/password.yaml
   tasks:
     - name: 
       package:
@@ -61,8 +58,8 @@
       notify: 
         - reload daemon
     - name: deamon enabled and start
-      systemd:
-        name: tomcat
+      service:
+        name: tomcat.service
         enabled: yes
         state: started
     - name: username and password
@@ -86,7 +83,7 @@
         state: started
     - name: restating
       systemd:
-        name: tomcat
+        name: tomcat.service
         state: restarted
       
 
