@@ -55,4 +55,15 @@
         - /opt/tomcat/apache-tomcat-8.5.66/bin/startup.sh
         - /opt/tomcat/apache-tomcat-8.5.66/bin/version.bat
         - /opt/tomcat/apache-tomcat-8.5.66/bin/version.sh
+        - /opt/tomcat/apache-tomcat-8.5.66/bin/daemon.sh
+        - /opt/tomcat/apache-tomcat-8.5.66/bin/digest.sh
+        - /opt/tomcat/apache-tomcat-8.5.66/bin/setclasspath.bat
+        - /opt/tomcat/apache-tomcat-8.5.66/bin/tool-wrapper.sh
+        - /opt/tomcat/apache-tomcat-8.5.66/bin/tool-wrapper.bat
+        - /opt/tomcat/apache-tomcat-8.5.66/bin/catalina.bat
+        - /opt/tomcat/apache-tomcat-8.5.66/bin/commons-daemon-native.tar.gz
+        - /opt/tomcat/apache-tomcat-8.5.66/bin/commons-daemon.jar
+        - /opt/tomcat/apache-tomcat-8.5.66/bin/tomcat-juli.jar
+        - /opt/tomcat/apache-tomcat-8.5.66/bin/tomcat-native.tar.gz
+
 
