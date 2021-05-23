@@ -40,7 +40,7 @@
     - name: ownership to webapp work tmp
       file:
         path: /opt/tomcat/webapps
-        user: tomcat
+        owner: tomcat
         recurse: yes
         
 
