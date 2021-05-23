@@ -44,10 +44,13 @@
         recurse: yes
         mode: g+r,g+x
     - name: ownership to webapp work tmp
-      file:
-        path: /opt/tomcat/webapps
+      file: 
+        path: "{{ item }}"
         owner: tomcat
         recurse: yes
+      loop:
+        - /opt/tomcat/webapps
+        - /opt/tomcat/work
         
 
     
