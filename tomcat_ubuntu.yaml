@@ -81,7 +81,7 @@
   handlers:
     - name: reload daemon
       systemd:
-        name: tomcat.service
+        name: tomcat
         daemon_reload: yes
         state: started
     - name: restating
