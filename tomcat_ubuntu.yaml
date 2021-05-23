@@ -35,7 +35,9 @@
     - name: owner permissions
       file:
         path: /opt/tomcat/conf/
+        group: tomcat
         recurse: yes
-        mode: g=rx
+        mode: g+r
+        state: file
 
     
