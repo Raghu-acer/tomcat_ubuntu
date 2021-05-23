@@ -3,7 +3,7 @@
   hosts: all
   become: yes
   vars_files:
-    - vars/package.yaml
+    - vars/packages.yaml
   tasks:
     - name: 
       package:
@@ -55,7 +55,7 @@
       loop: "{{ tomcat_ownership }}"
     - name: service file 
       copy:
-        src: tomcat.service.j2
+        src: tomcat.service
         dest: /etc/systemd/system/tomcat.service
       notify: 
         - reload daemon
