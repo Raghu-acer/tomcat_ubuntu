@@ -9,7 +9,6 @@ tomcat_user: /opt/tomcat/conf/tomcat-users.xml
 java_path: /usr/lib/jvm/java-1.8.0-openjdk-amd64
 tomcat_start: /opt/tomcat/bin/startup.sh
 tomcat_stop: /opt/tomcat/bin/shutdown.sh
-
 tomcat_ownership: 
  - /opt/tomcat/webapps
  - /opt/tomcat/work

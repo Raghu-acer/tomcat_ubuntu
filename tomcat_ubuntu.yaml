@@ -4,9 +4,6 @@
   become: yes
   vars_files:
     - ./vars/packages.yaml
-  vars:
-    tomcat_admin_username: raghu
-    tomcat_admin_password: qtdevops@123
   tasks:
     - name: 
       package:
@@ -69,7 +66,7 @@
         state: started
     - name: username and password
       copy:
-        src: tomcat-users.xml.j2
+        src: tomcat-users.xml
         dest: "{{ tomcat_user }}"
       notify:
         - restating

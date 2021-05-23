@@ -1,0 +1,3 @@
+<tomcat-users>
+    <user username="ansible" password="roles" roles="manager-gui,admin-gui"/>
+</tomcat-users>
