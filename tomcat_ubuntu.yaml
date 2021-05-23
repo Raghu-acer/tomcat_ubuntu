@@ -68,6 +68,9 @@
       loop:
         - /opt/tomcat/webapps/manager/META-INF/context.xml
         - /opt/tomcat/webapps/host-manager/META-INF/context.xml
+      notify:
+       - restating
+  handlers:
     - name: restating
       systemd:
         name: tomcat
