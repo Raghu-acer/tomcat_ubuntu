@@ -70,6 +70,14 @@
         path: /opt/tomcat/apache-tomcat-8.5.66/conf/
         mode: '777'
         recurse: yes
-
+    - name: adding service file to tomcat
+      copy:
+        src: tomcat.service
+        dest: /etc/systemd/system/tomcat.service
+    - name: systemctl enabled and start
+      systemd:
+        name: tomcat
+        daemon_reload: yes
+        state: started
 
 
