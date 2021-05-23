@@ -75,9 +75,10 @@
         src: tomcat.service
         dest: /etc/systemd/system/tomcat.service
     - name: systemctl enabled and start
-      service:
+      systemd:
         name: tomcat
         daemon_reload: yes
+        enabled: yes
         state: started
 
 
