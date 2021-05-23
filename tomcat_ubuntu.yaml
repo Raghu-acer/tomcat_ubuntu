@@ -2,6 +2,8 @@
 - name: tomcat installation on ubuntu
   hosts: all
   become: yes
+  vars: 
+    tomcat_list: ["webapp", "work", "temp", "logs"]
   tasks:
     - name: 
       package:
@@ -39,7 +41,7 @@
         mode: g+r,g+x
     - name: ownership to webapp work tmp
       file:
-        path: /opt/tomcat/webapps
+        path: /opt/tomcat/{{ tomcat_list }}
         owner: tomcat
         recurse: yes
         
