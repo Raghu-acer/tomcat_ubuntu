@@ -39,5 +39,11 @@
         recurse: yes
         mode: g+r
         state: file
+    - name: group
+      file:
+        path: /opt/tomcat/conf/
+        group: tomcat
+        mode: g+x
+        state: file
 
     
