@@ -61,6 +61,24 @@
       systemd:
         name: tomcat
         daemon_reload: yes
+        enabled: yes
         state: started
+    - name: username and password
+      copy:
+        src: tomcat-users.xml
+        dest: /opt/tomcat/conf/tomcat-users.xml
+    - name: context file
+      copy:
+        src: context.xml
+        dest: "{{ item }}"
+      loop:
+        - /opt/tomcat/webapps/manager/META-INF/context.xml
+        - /opt/tomcat/webapps/host-manager/META-INF/context.xml
+    - name: restating
+      systemd:
+        name: tomcat
+        state: restarted
+      
+
 
     
