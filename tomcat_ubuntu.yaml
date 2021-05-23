@@ -2,6 +2,8 @@
 - name: tomcat installation on ubuntu
   hosts: all
   become: yes
+  vars_files:
+    - vars/package.yaml
   tasks:
     - name: 
       package:
