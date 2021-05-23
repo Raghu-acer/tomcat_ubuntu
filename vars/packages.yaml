@@ -6,7 +6,10 @@ tomcat_home: /opt/tomcat
 tomcat_url: "https://downloads.apache.org/tomcat/tomcat-9/v9.0.46/bin/apache-tomcat-9.0.46.tar.gz"
 tomcat_dest: /tmp/apache-tomcat-9.0.46.tar.gz
 tomcat_user: /opt/tomcat/conf/tomcat-users.xml
-tomcat_ownership:
+java_path: /usr/lib/jvm/java-1.8.0-openjdk-amd64
+tomcat_start: /opt/tomcat/bin/startup.sh
+tomcat_stop: /opt/tomcat/bin/shutdown.sh
+tomcat_ownership: 
  - /opt/tomcat/webapps
  - /opt/tomcat/work
  - /opt/tomcat/temp
