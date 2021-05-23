@@ -60,7 +60,7 @@
         src: tomcat.service
         dest: /etc/systemd/system/tomcat.service
       notify: 
-       - reload daemon
+        - reload daemon
     - name: deamon enabled and start
       systemd:
         name: tomcat
@@ -71,7 +71,7 @@
         src: tomcat-users.xml
         dest: /opt/tomcat/conf/tomcat-users.xml
       notify:
-       - restating
+        - restating
     - name: context file
       copy:
         src: context.xml
@@ -80,7 +80,7 @@
         - /opt/tomcat/webapps/manager/META-INF/context.xml
         - /opt/tomcat/webapps/host-manager/META-INF/context.xml
       notify:
-      - restating
+        - restating
   handlers:
     - name: reload daemon
       systemd:
