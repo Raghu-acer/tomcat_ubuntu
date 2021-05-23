@@ -58,6 +58,8 @@
       copy:
         src: tomcat-users.xml
         dest: /opt/tomcat/conf/tomcat-users.xml
+      notify:
+        - restating
     - name: context file
       copy:
         src: context.xml
@@ -65,10 +67,6 @@
       loop:
         - /opt/tomcat/webapps/manager/META-INF/context.xml
         - /opt/tomcat/webapps/host-manager/META-INF/context.xml
-    - name: restating
-      systemd:
-        name: tomcat
-        state: restarted
   handlers:
     - name: unarchive the tar file
       unarchive:
