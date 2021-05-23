@@ -35,3 +35,25 @@
         path: /opt/tomcat
         owner: tomcat
         recurse: yes
+    - name: group read access
+      file:
+        path: "{{ item }}"
+        mode: +x
+      loop:
+        - /opt/tomcat/apache-tomcat-8.5.66/bin/startup.bat
+        - /opt/tomcat/apache-tomcat-8.5.66/bin/catalina-tasks.xml
+        - /opt/tomcat/apache-tomcat-8.5.66/bin/bootstrap.jar
+        - /opt/tomcat/apache-tomcat-8.5.66/bin/catalina.sh
+        - /opt/tomcat/apache-tomcat-8.5.66/bin/ciphers.bat  
+        - /opt/tomcat/apache-tomcat-8.5.66/bin/ciphers.sh
+        - /opt/tomcat/apache-tomcat-8.5.66/bin/configtest.bat
+        - /opt/tomcat/apache-tomcat-8.5.66/bin/configtest.sh
+        - /opt/tomcat/apache-tomcat-8.5.66/bin/digest.bat
+        - /opt/tomcat/apache-tomcat-8.5.66/bin/setclasspath.sh
+        - /opt/tomcat/apache-tomcat-8.5.66/bin/shutdown.bat
+        - /opt/tomcat/apache-tomcat-8.5.66/bin/shutdown.sh
+        - /opt/tomcat/apache-tomcat-8.5.66/bin/startup.bat
+        - /opt/tomcat/apache-tomcat-8.5.66/bin/startup.sh
+        - /opt/tomcat/apache-tomcat-8.5.66/bin/version.bat
+        - /opt/tomcat/apache-tomcat-8.5.66/bin/version.sh
+
