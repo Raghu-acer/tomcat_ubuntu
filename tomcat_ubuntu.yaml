@@ -37,7 +37,11 @@
         path: /opt/tomcat/conf/
         recurse: yes
         mode: g+r,g+x
-
+    - name: ownership to webapp work tmp
+      file:
+        path: /opt/tomcat/webapps
+        user: tomcat
+        recurse: yes
         
 
     
