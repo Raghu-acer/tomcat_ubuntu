@@ -45,7 +45,7 @@
         mode: g+r,g+x
     - name: ownership to webapp work tmp
       file:
-        path: {{ tomcat_list }}
+        path: "{{ tomcat_list }}"
         owner: tomcat
         recurse: yes
         
