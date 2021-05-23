@@ -5,18 +5,18 @@ After=network.target
 [Service]
 Type=forking
 
-Environment=JAVA_HOME="{{ java_path }}"
+Environment=JAVA_HOME={{ java_path }}
 Environment=CATALINA_PID=/opt/tomcat/temp/tomcat.pid
-Environment=CATALINA_HOME="{{ username }}"
-Environment=CATALINA_BASE="{{ username }}"
+Environment=CATALINA_HOME={{ username }}
+Environment=CATALINA_BASE={{ username }}
 Environment='CATALINA_OPTS=-Xms512M -Xmx1024M -server -XX:+UseParallelGC'
 Environment='JAVA_OPTS=-Djava.awt.headless=true -Djava.security.egd=file:/dev/./urandom'
 
-ExecStart="{{ tomcat_start }}"
-ExecStop="{{ tomcat_stop }}"
+ExecStart={{ tomcat_start }}
+ExecStop={{ tomcat_stop }}
 
-User="{{ username }}"
-Group="{{ username }}"
+User={{ username }}
+Group={{ username }}
 UMask=0007
 RestartSec=10
 Restart=always
