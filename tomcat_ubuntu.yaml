@@ -25,12 +25,13 @@
     - name: fetch the state
       stat:
         path: /opt/tomcat
-      
+      register: tomcat_download
     - name: unarchive the tar file
       unarchive:
         src: /tmp/apache-tomcat-9.0.46.tar.gz
         dest: /opt/tomcat
         extra_opts: [--strip-components=1]
+      when: ansible_facts['distribution'] == not tomcat_download.stat.exists
     - name: group permissions
       file:
         path: /opt/tomcat
