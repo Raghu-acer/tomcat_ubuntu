@@ -3,7 +3,7 @@
   hosts: all
   become: yes
   vars_file:
-    - vars/packages
+    - vars/packages.yaml
   tasks:
     - name: 
       package:
