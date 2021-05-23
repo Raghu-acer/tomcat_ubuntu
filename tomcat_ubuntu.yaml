@@ -30,3 +30,8 @@
       unarchive:
         src: /tmp/apache-tomcat-8.5.66.zip
         dest: /opt/tomcat/
+    - name: creating a link
+      file:
+        path: /opt/tomcat
+        owner: tomcat
+        recurse: yes
