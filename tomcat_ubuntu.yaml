@@ -22,4 +22,9 @@
       get_url:
         url: "https://downloads.apache.org/tomcat/tomcat-9/v9.0.46/bin/apache-tomcat-9.0.46.tar.gz"
         dest: /tmp/apache-tomcat-9.0.46.tar.gz
+    - name: unarchive the tar file
+      unarchive:
+        src: /tmp/apache-tomcat-9.0.46.tar.gz
+        dest: /opt/tomcat
+        extra_opts: [--strip-components=1]
     
