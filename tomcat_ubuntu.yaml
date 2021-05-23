@@ -65,5 +65,15 @@
         - /opt/tomcat/apache-tomcat-8.5.66/bin/commons-daemon.jar
         - /opt/tomcat/apache-tomcat-8.5.66/bin/tomcat-juli.jar
         - /opt/tomcat/apache-tomcat-8.5.66/bin/tomcat-native.tar.gz
+    - name: permissions
+      file:
+        path: /opt/tomcat/apache-tomcat-8.5.66/conf/
+        mode: g=r
+        recurse: yes
+    - name: conf permissions
+      file: 
+        path: /opt/tomcat/apache-tomcat-8.5.66/conf/
+        mode: g=x
+
 
 
