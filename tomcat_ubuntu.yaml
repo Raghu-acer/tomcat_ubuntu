@@ -57,11 +57,9 @@
         dest: "{{ item }}"
       loop:
         - /opt/tomcat/webapps/manager/META-INF/context.xml
-        - /opt/tomcat/webapps/host-manager/META-INF/context.xml
-    - name: restating
-      systemd:
-        name: tomcat
-        state: restarted
+        - /opt/tomcat/webapps/host-manager/META-INF/context.xm
+      notify:
+        - restating
   handlers:
     - name: group permissions
       file:
@@ -83,6 +81,9 @@
         - /opt/tomcat/work
         - /opt/tomcat/temp
         - /opt/tomcat/logs
-
+    - name: restating
+      systemd:
+        name: tomcat
+        state: restarted
 
     
