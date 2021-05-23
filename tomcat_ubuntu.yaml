@@ -40,7 +40,6 @@
         path: "{{ item }}"
         mode: +x
       loop:
-        - /opt/tomcat/apache-tomcat-8.5.66/bin/startup.bat
         - /opt/tomcat/apache-tomcat-8.5.66/bin/catalina-tasks.xml
         - /opt/tomcat/apache-tomcat-8.5.66/bin/bootstrap.jar
         - /opt/tomcat/apache-tomcat-8.5.66/bin/catalina.sh
