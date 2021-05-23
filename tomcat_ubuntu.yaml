@@ -2,7 +2,7 @@
 - name: tomcat installation on ubuntu
   hosts: all
   become: yes
-  vars_file:
+  vars_files:
     - vars/packages.yaml
     - password.yaml
   tasks:
