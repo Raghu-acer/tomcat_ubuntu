@@ -15,5 +15,4 @@ tomcat_ownership:
  - /opt/tomcat/temp
  - /opt/tomcat/logs
 tomcat_context:
- - /opt/tomcat/webapps/manager/META-INF/context.xml
- - /opt/tomcat/webapps/host-manager/META-INF/context.xml
+ 
