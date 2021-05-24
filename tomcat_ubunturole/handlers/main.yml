@@ -1,0 +1,11 @@
+---
+# handlers file for tomcat_ubunturole
+- name: reload daemon
+  systemd:
+    name: tomcat.service
+    daemon_reload: yes
+    state: started
+- name: restarting
+  systemd:
+    name: tomcat.service
+    state: restarted

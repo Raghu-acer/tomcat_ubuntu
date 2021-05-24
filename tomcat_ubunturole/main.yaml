@@ -1,0 +1,6 @@
+---
+- name: tomcat installation on ubuntu
+  hosts: all
+  become: yes
+  roles:
+    - role: tomcat_ubunturole
