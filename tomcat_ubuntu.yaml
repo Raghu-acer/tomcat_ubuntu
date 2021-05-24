@@ -3,6 +3,9 @@
   hosts: all
   become: yes
   tasks:
+  vars_file:
+    - vars/tomcat
+    - vars/password
     - name: 
       apt:
         name: "{{ java_package }}"
@@ -57,7 +60,7 @@
         recurse: yes
       loop: "{{ tomcat_ownership }}"
     - name: service file 
-      copy:
+      template:
         src: tomcat.service.j2
         dest: "{{ tomcat_servicefile }}"
       notify: 
@@ -68,7 +71,7 @@
         enabled: yes
         state: started
     - name: username and password
-      copy:
+      template:
         src: tomcat-users.xml.j2
         dest: "{{ tomcat_user }}"
       notify:

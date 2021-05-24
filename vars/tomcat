@@ -12,8 +12,9 @@ tomcat_start: /opt/tomcat/bin/startup.sh
 tomcat_stop: /opt/tomcat/bin/shutdown.sh
 tomcat_check_dir: /opt/tomcat/conf
 tomcat_servicefile: /etc/systemd/system/tomcat.service
-tomcat_admin_username: devops
-tomcat_admin_password: devops
+tomcat_admin_roles:
+  - manager-gui
+  - admin-gui
 tomcat_ownership: 
  - /opt/tomcat/webapps
  - /opt/tomcat/work
