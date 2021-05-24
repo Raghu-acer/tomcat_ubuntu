@@ -4,6 +4,12 @@
   become: yes
   vars_files:
     - ./vars/packages.yaml
+  vars:
+    tomcat_admin_username: qtdevops
+    tomcat_admin_password: qtdevops@123
+    tomcat_admin_roles:
+      - manager-gui
+      - admin-gui
   tasks:
     - name: 
       package:
