@@ -72,7 +72,7 @@
         state: started
     - name: username and password
       copy:
-        src: tomcat-users.xml
+        src: tomcat-users.xml.j2
         dest: "{{ tomcat_user }}"
       notify:
         - restating
