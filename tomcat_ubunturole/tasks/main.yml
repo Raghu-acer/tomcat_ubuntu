@@ -69,7 +69,7 @@
         src: tomcat-users.xml.j2
         dest: "{{ tomcat_user }}"
       notify:
-        - restatring
+        - restarting
     - name: context file
       copy:
         src: context.xml
