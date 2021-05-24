@@ -2,10 +2,10 @@
 - name: tomcat installation on ubuntu
   hosts: all
   become: yes
-  tasks:
-  vars_file:
+  vars_files:
     - vars/tomcat
     - vars/password
+  tasks:
     - name: 
       apt:
         name: "{{ java_package }}"
